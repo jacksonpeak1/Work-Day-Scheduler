@@ -10,13 +10,30 @@ for (var i = 0; i < hoursToDisplay.length; i++) {
   ${hoursToDisplay[i]}:00
   </div>
 
-    <textarea class= "col-8 ${currentHour == hoursToDisplay[i] ? 'present' : currentHour<hoursToDisplay[i] ? 'future' : 'past'}"></textarea>
+    <textarea data-hour=${hoursToDisplay[i]} class= "col-8 ${
+    currentHour == hoursToDisplay[i]
+      ? "present"
+      : currentHour < hoursToDisplay[i]
+      ? "future"
+      : "past"
+  }"></textarea>
 
-  <button class="col-2 saveBtn">
+  <button class="col-2 saveBtn" data-hour="${hoursToDisplay[i]}">
     Save
   </button>`;
   containerDiv.append(newRow);
 }
+
+var saveButtons = document.getElementsByClassName("saveBtn");
+console.log(saveButtons);
+
+Array.from(saveButtons).forEach((button) =>
+  button.addEventListener("click", function (e) {
+    var userInput = e.target.parentElement.children[1].value;
+    var thisHour = e.target.dataset.hour;
+    localStorage.setItem(thisHour, userInput);
+  })
+);
 
 /*Set up time*/
 
