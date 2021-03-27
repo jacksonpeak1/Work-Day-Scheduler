@@ -6,7 +6,7 @@ for (var i = 0; i < hoursToDisplay.length; i++) {
   var containerDiv = document.getElementById("container");
   var newRow = document.createElement("div");
   newRow.classList.add("row", "time-block");
-  newRow.innerHTML = `   <div class="col-2">
+  newRow.innerHTML = `   <div class="col-2 hour">
   ${hoursToDisplay[i]}:00
   </div>
 
@@ -16,7 +16,7 @@ for (var i = 0; i < hoursToDisplay.length; i++) {
       : currentHour < hoursToDisplay[i]
       ? "future"
       : "past"
-  }"></textarea>
+  }">${localStorage.getItem(hoursToDisplay[i]) || ''}</textarea>
 
   <button class="col-2 saveBtn" data-hour="${hoursToDisplay[i]}">
     Save
