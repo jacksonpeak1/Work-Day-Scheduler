@@ -16,7 +16,7 @@ for (var i = 0; i < hoursToDisplay.length; i++) {
       : currentHour < hoursToDisplay[i]
       ? "future"
       : "past"
-  }">${localStorage.getItem(hoursToDisplay[i]) || ''}</textarea>
+  }">${localStorage.getItem(hoursToDisplay[i]) || ""}</textarea>
 
   <button class="col-2 saveBtn" data-hour="${hoursToDisplay[i]}">
     Save
